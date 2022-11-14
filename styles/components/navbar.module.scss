@@ -1,0 +1,34 @@
+@use '../utils/utils' as *;
+
+.nav {
+  height: 7.5rem;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  background-color: $tertiary-variant;
+}
+.container {
+  padding-inline: $space-xl-2xl;
+  height: 7.5rem;
+  @include flex-center-y;
+  justify-content: space-between;
+  width: 100%;
+
+  .options {
+    @include flex-center-y;
+    gap: $space-2xl-3xl;
+
+    .links {
+      @include flex-center-y;
+      gap: 3rem;
+      color: $tertiary-variant;
+    }
+  }
+}
+
+.logo {
+  width: 14rem;
+  svg {
+    filter: drop-shadow(1px 1.5px 1.75px rgb(0 0 0 / 0.4));
+  }
+}

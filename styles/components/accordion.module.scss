@@ -1,0 +1,37 @@
+@use '../utils/utils' as *;
+
+.accordion {
+  max-width: 65rem;
+  height: 7.9rem;
+  overflow: hidden;
+  
+  background-color: rgba(0, 0, 0, 0.4);
+  .item {
+    button {
+      background-color: rgba(0, 0, 0, 0.4);
+      color: $primary-variant;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      width: 100%;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+      height: 7.9rem;
+      h3 {
+        font-size: 4.3rem;
+      }
+      span {
+        font-size: 3.583rem;
+      }
+    }
+
+    .answer {
+      color: $tertiary-variant;
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.953rem;
+      
+    }
+  }
+}
