@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tv_shows",
+  "info": {
+    "singularName": "tv-show",
+    "pluralName": "tv-shows",
+    "displayName": "TV_Show",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "string"
+    },
+    "plot": {
+      "type": "string"
+    },
+    "releaseDate": {
+      "type": "string"
+    },
+    "actors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::actor.actor"
+    },
+    "genre": {
+      "type": "string"
+    },
+    "season": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::season.season"
+    }
+  }
+}

@@ -1,141 +1,202 @@
 @use '../utils/utils' as *;
 
 .container {
-  min-height: calc(100vh - 10rem);
+  overflow: hidden;
   width: 100%;
+  height: 100%;
+  position: relative;
+  background: #000000;
+  background-image: -webkit-linear-gradient(
+    to right,
+    rgb(35, 34, 34) 0%,
+    rgb(14, 14, 14) 70%
+  );
+  background: linear-gradient(
+    to right,
+    rgb(35, 34, 34) 0%,
+    rgb(14, 14, 14) 70%
+  );
+
   .outer {
     position: relative;
-    min-height: calc(100vh - 10rem);
     width: 100%;
-    z-index: 2;
-
-    margin-inline: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100%;
+    @include flex-center;
     overflow: hidden;
-
     .inner {
-      top: 0px;
-      position: absolute;
-      margin-inline: auto;
-      min-height: 100vh;
       width: 100%;
-
-      video {
+      max-height: 97vh;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: 97vh;
+        z-index: 3;
+        background: linear-gradient(
+          180deg,
+          rgba(2, 0, 36, 0.20632002801120453) 30%,
+          rgba(20, 20, 20, 0.8) 86%,
+          rgba(20, 20, 20, 0.9) 93%,
+          rgba(20, 20, 20, 0.95) 95%,
+          rgba(20, 20, 20, 0.97) 97%,
+          rgba(20, 20, 20, 1) 100%
+        );
+        @include respond-below(md) {
+          max-height: 100vh;
+          width: auto;
+        }
+        @include respond-above(xxl) {
+          height: 100%;
+          width: auto;
+        }
+      }
+      .video {
         position: absolute;
         object-fit: cover;
-        min-height: 100vh;
+        max-height: 100vh;
         margin-inline: auto;
         width: 100%;
+        aspect-ratio: 16/ 9;
+        z-index: 1;
+        top: 0;
+        @include respond-below(md) {
+          display: none;
+        }
+        video {
+          position: absolute;
+          object-fit: cover;
+          height: 97vh;
+          margin-inline: auto;
+          width: 100%;
+          aspect-ratio: 16 / 9;
+        }
+      }
+      .image {
+        aspect-ratio: 16/ 9;
+        position: relative;
+        max-height: 100vh;
+        width: 100%;
+        object-fit: cover;
+        top: 0;
+        img:nth-child(1) {
+          position: absolute;
+          z-index: 2;
+          top: 0;
+          @include respond-below(md) {
+            display: none;
+          }
+        }
+        img:nth-child(2) {
+          display: none;
+          background: #000;
+          @include respond-below(md) {
+            display: block;
+          }
+        }
+
+        @include respond-below(md) {
+          position: relative;
+          max-height: 100vh;
+        }
+
+        @include respond-above(xxl) {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .mute {
+        background: transparent;
+        width: fit-content;
+        height: fit-content;
+        position: absolute;
+        right: 0;
+        margin-right: $space-m;
+        bottom: 35%;
+        border: solid 1px $tertiary-variant;
+        padding: $space-xs;
+        border-radius: 50%;
+        z-index: 5;
+        cursor: pointer;
+        .icon {
+          width: 3rem;
+          height: 3rem;
+          position: relative;
+          border-radius: 50%;
+          background: transparent;
+          @include flex-center;
+        }
+        @include respond-below(md) {
+          display: none;
+        }
       }
     }
 
-    .overlay {
-      margin-inline: auto;
+    .content {
       position: absolute;
+      height: fit-content;
       width: 100%;
-      height: 100%;
-      top: 0;
+      padding-left: $space-l;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgb(255, 255, 255);
-      background: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(26, 27, 29, 0.7875525210084033) 61%,
-        rgba(26, 27, 29, 1) 100%
-      );
-      z-index: 2;
-      cursor: pointer;
-      .content {
-        display: flex;
-        align-items: center;
-        min-height: calc(100vh - 17rem);
-        padding-left: $space-xl-2xl;
-
-        :nth-child(1) {
-          .image {
-            aspect-ratio: 800 /113;
-            height: auto;
-            position: relative;
-            display: block;
-            width: 100%;
+      z-index: 5;
+      bottom: 25%;
+      @include respond-below(md) {
+        @include flex-center;
+        margin-inline: auto;
+        bottom: 0;
+        padding: 0 $space-s $space-s $space-s;
+        max-height: 100vh;
+      }
+      :nth-child(1) {
+        .image {
+          aspect-ratio: 800 /134;
+          position: relative;
+          max-width: clamp(25rem, 30vw, 65rem);
+          width: 100%;
+          height: auto;
+          @include respond-below(md) {
+            max-width: 100%;
           }
+        }
 
-          p {
-            color: $tertiary-variant;
-            font-size: 2.4rem;
-            max-width: 45rem;
-            line-height: 1.2;
-            margin: $space-m 0;
+        p {
+          color: $tertiary-variant;
+          font-size: 1.953rem;
+          max-width: 45rem;
+          line-height: 1.2;
+          margin: $space-m 0;
+          @include respond-below(md) {
+            font-size: 1.563rem;
+            text-align: center;
           }
+        }
 
-          .buttons {
-            display: flex;
-            gap: 2rem;
-            button {
-              @include flex-center-y;
-              gap: 1rem;
-              border: 1px solid rgba(0, 0, 0, 0.1);
-              border-radius: 0.25rem;
-              box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-              box-sizing: border-box;
-              color: rgba(0, 0, 0, 0.85);
-              cursor: pointer;
-              display: inline-flex;
-              font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue',
-                Helvetica, Arial, sans-serif;
-              font-size: 16px;
-              font-weight: 600;
-              justify-content: center;
-              line-height: 1.25;
-              margin: 0;
-              min-height: 3rem;
-              padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
-              position: relative;
-              text-decoration: none;
-              transition: all 250ms;
-              user-select: none;
-              -webkit-user-select: none;
-              touch-action: manipulation;
-              vertical-align: baseline;
-              width: auto;
-            }
-
-            button:nth-child(1) {
-              background-color: $primary-variant;
-            }
-
-            button:nth-child(2) {
-              background-color: rgba(109, 109, 110, 0.7);
-              color: $tertiary-variant;
-            }
-
-            button:hover,
-            button:focus {
-              border-color: rgba(0, 0, 0, 0.15);
-              box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-              color: rgba(0, 0, 0, 0.65);
-            }
-
-            button:hover {
-              transform: translateY(-1px);
-            }
-
-            button:active {
-              background-color: #f0f0f1;
-              border-color: rgba(0, 0, 0, 0.15);
-              box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-              color: rgba(0, 0, 0, 0.65);
-              transform: translateY(0);
-            }
+        .buttons {
+          display: inline-flex;
+          gap: 2rem;
+          @include flex-center-y;
+          // div:nth-child(2) {
+          //   background-color: rgba(109, 109, 110, 0.7);
+          //   color: $tertiary-variant;
+          //   @include flex-center;
+          //   border-radius: 0.4rem;
+          //   height: 4.8rem;
+          //   width: 15rem;
+          //   text-transform: uppercase;
+          //   font-style: bold;
+          // }
+          @include respond-below(md) {
+            display: none;
           }
         }
       }
     }
   }
 }
-
-//

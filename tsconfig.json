@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "es2018",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["dom", "dom.iterable", "esnext", "es2018", "esnext.asynciterable"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,14 +20,22 @@
     "paths": {
       "@/components/*": ["./components/*"],
       "@/containers/*": ["./containers/*"],
+      "@/data/*": ["./data/*"],
       "@/hooks/*": ["./hooks/*"],
       "@/styles/*": ["/styles/*"],
-      "@/utils/*": ["helpers/*"],
+      "@/helpers/*": ["helpers/*"],
       "@/animations/*": ["./animations/*"],
       "@/svgs/*": ["./svgs/*"],
-      "@/shared/*": ["./shared/*"]
+      "@/shared/*": ["./shared/*"],
+      "@/typings/*": ["types/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "types/**/*",
+    "**/*.ts",
+    "**/*.tsx",
+    "types/videojs.d.ts"
+  ],
   "exclude": ["node_modules"]
 }

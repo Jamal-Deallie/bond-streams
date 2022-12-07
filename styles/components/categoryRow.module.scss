@@ -1,0 +1,14 @@
+@use '../utils/utils' as *;
+
+.container {
+  padding: $space-m 0;
+  width: 100%;
+  height: 35rem;
+
+  .inner {
+    display: flex;
+    align-items: stretch;
+    gap: 5rem;
+    width: 100%;
+  }
+}

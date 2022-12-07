@@ -1,26 +1,21 @@
-import React from 'react';
+import Link from 'next/link';
 import styles from '@/styles/containers/hero.module.scss';
-import { AdvancedVideo, lazyload } from '@cloudinary/react';
-import { Cloudinary } from '@cloudinary/url-gen';
-
-const cld = new Cloudinary({
-  cloud: {
-    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_KEY,
-  },
-});
+import Button from '@/components/Button';
+import ResponsiveVideo from '@/components/ResponsiveVideo';
 
 const Hero = () => {
-  const myVideo = cld.video('Bond/bond_trailer_vay7hq');
+  // const https://res.cloudinary.com/dp5qjsiff/video/upload/v1668294815/Bond/bond_trailer_vay7hq.mp4
   return (
     <div className={styles.container}>
       <div className={styles.outer}>
         <div className={styles.inner}>
-          <AdvancedVideo
-            cldVid={myVideo}
-            autoPlay
-            loop
-            muted
-            plugins={[lazyload()]}
+          <ResponsiveVideo
+            mute={true}
+            url={
+              'https://res.cloudinary.com/dp5qjsiff/video/upload/v1668294815/Bond/bond_trailer_vay7hq.mp4'
+            }
+            autoPlay={true}
+            playing={true}
           />
         </div>
         <div className={styles.overlay}>
@@ -35,8 +30,9 @@ const Hero = () => {
                 Unlimited movies, TV shows, and more. Watch anywhere. Cancel
                 anytime.
               </p>
-
-              <button >Get Started</button>
+              <Link href='signup'>
+                <Button variant='primary'>Get Started</Button>
+              </Link>
             </div>
           </div>
         </div>

@@ -12,33 +12,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
   const bgColor = router.route === '/' ? '#fffefc' : 'transparent';
 
-  useIsomorphicLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
-
-      ScrollTrigger.create({
-        trigger: '#nav-color',
-        start: 'top-=80',
-        end: 'center center',
-        onEnter: () => {
-          navColor('#1a1b1d');
-        },
-        onEnterBack: () => {
-          navColor(bgColor);
-        },
-      });
-
-      function navColor(color: string) {
-        gsap.to('#navbar', { backgroundColor: color, ease: 'sine.inOut' });
-      }
-    }, root);
-    return () => ctx.revert(); // cleanup!
-  }, []);
-
   return (
-    <div className={styles.container} ref={root}>
+    <div className={styles.container} ref={root} id='root'>
       <Navbar bgColor={bgColor} />
-      <div className={styles.main}>{children}</div>
+      <main className={styles.main}>{children}</main>
       <Footer />
     </div>
   );

@@ -1,0 +1,15 @@
+query getThumbnail {
+  movies {
+    data {
+      attributes {
+        slug
+        thumbnail
+        trailer
+        plot
+        title
+        rating
+        runningTime
+      }
+    }
+  }
+}

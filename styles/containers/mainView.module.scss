@@ -1,0 +1,55 @@
+@use '../utils/utils' as *;
+
+.container {
+  background: #141414;
+  // background: -webkit-radial-gradient(
+  //   rgb(14, 14, 14) 0% rgb(35, 34, 34) 70%
+  // ); /* Chrome 10-25, Safari 5.1-6 */
+  // background: radial-gradient(#353434, #141414);
+  width: 100%;
+  padding-bottom: $space-2xl;
+  // z-index: 1;
+  position: relative;
+  // height: 100%;
+
+  .outer {
+    overflow: hidden;
+  }
+  .inner {
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+  }
+
+  .overlay {
+    margin-inline: auto;
+    position: absolute;
+    height: 7%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.7;
+
+    // background: linear-gradient(180deg, transparent 0%, #141414 100%);
+    // z-index: -1;
+    cursor: pointer;
+    // background: -moz-linear-gradient(
+    //   180deg,
+    //   rgba(0, 0, 0, 0.75) 0%,
+    //   rgba(0, 0, 0, 0.75) 46%,
+    //   rgba(0, 0, 0, 0) 100%
+    // );
+    // background: -webkit-linear-gradient(
+    //   180deg,
+    //   rgba(20, 20, 20, 1) 55%,
+    //   rgba(20, 20, 20, 1) 100%
+    // );
+    // background: linear-gradient(
+    //   180deg,
+    //   transparent 0%,
+    //   rgba(20, 20, 20, 1) 55%,
+    //   rgba(20, 20, 20, 1) 100%
+    // );
+  }
+}

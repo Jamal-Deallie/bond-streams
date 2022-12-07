@@ -1,0 +1,118 @@
+@use '../utils/utils' as *;
+
+.container {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: $secondary-variant;
+}
+
+.outer {
+  height: 100%;
+  width: 100%;
+
+  overflow: hidden;
+  position: relative;
+
+  &:before {
+    content: '';
+    overflow: hidden;
+    display: inline-block;
+    position: fixed;
+    width: 100%;
+    height: calc(100vh - 7.5rem);
+    overflow: hidden;
+    background-color: $secondary-variant;
+  }
+
+  .content {
+    position: fixed;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    @include flex-column;
+    min-height: 59.2rem;
+    max-width: 60rem;
+    width: 100%;
+    padding: 2rem 6rem;
+
+    .heading {
+      margin-top: $space-l-xl;
+      margin-bottom: $space-m;
+      h1 {
+        font-size: 6.192rem;
+        color: $primary-variant;
+        text-align: center;
+      }
+    }
+    .google {
+      cursor: pointer;
+      button {
+        background-color: $tertiary-variant;
+        padding: 1rem 2.4rem;
+        display: flex;
+        gap: 0.75rem;
+        width: 100%;
+        span {
+          text-transform: none;
+        }
+      }
+    }
+    .divider {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      margin: $space-xs 0;
+      width: 100%;
+      span {
+        padding-inline: 2rem;
+        color: $primary-variant;
+      }
+      &:before {
+        content: '';
+        border-color: #e0e0e1;
+        border-top: 1px solid $primary-variant;
+        width: 100%;
+      }
+      &:after {
+        content: '';
+        border-color: #e0e0e1;
+        border-top: 1px solid $primary-variant;
+        width: 100%;
+      }
+    }
+  }
+
+  .link {
+    margin-top: $space-m;
+    a {
+      color: $tertiary-variant;
+      display: flex;
+      gap: 0.75rem;
+      @include flex-center;
+      span:nth-of-type(2) {
+        color: $primary-variant;
+      }
+    }
+  }
+}
+
+.image {
+  margin: 0;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, 0%);
+  aspect-ratio: 993 / 1361;
+  width: auto;
+  opacity: 0.5;
+  overflow: hidden;
+  height: calc(100vh - 7.5rem);
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}

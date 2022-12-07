@@ -67,10 +67,10 @@ $breakpoints: (
   'xxl': 1440px,
 );
 
-$body-font: arial, sans-serif;
+$body-font: 'Roboto', sans-serif;
 $heading-font: 'Bebas Neue', sans-serif;
 $primary-variant: #d4a25b;
-$secondary-variant: #1a1b1d;
+$secondary-variant: rgba(20, 20, 20, 1);
 $tertiary-variant: #fffefc;
 
 $padding-lrg: $space-2xl-3xl $space-l-xl;

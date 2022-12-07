@@ -1,0 +1,16 @@
+overwrite: true
+schema: "http://localhost:1337/graphql"
+documents: "graphql/**/*.graphql"
+generates:
+  generated/global/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-query"
+      - "typescript-resolvers"
+    config:
+          fetcher: "graphql-request"
+    hooks:
+      afterAllFileWrite:
+        - eslint --fix
+        - prettier --write
