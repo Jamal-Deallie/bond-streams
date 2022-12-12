@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { gsap } from 'gsap/dist/gsap';
-import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayout';
+import { useIsomorphicLayoutEffect } from '@/src/hooks/useIsomorphicLayout';
 import ResponsiveVideo from '@/components/ResponsiveVideo';
 
 type CardProps = {
@@ -25,7 +25,6 @@ const CategoryCard = ({
   id,
   autoPlay,
 }: CardProps) => {
-
   const root = useRef<HTMLDivElement>(null);
   const vid = useRef<any>();
 
@@ -70,24 +69,27 @@ const CategoryCard = ({
         className={styles.container}
         onMouseOver={hoverPlay}
         onMouseOut={hoverPause}>
-        <div className={styles.video}>
-          <ResponsiveVideo
-            url={vidUrl}
-            mute={isMuted}
-            autoPlay={autoPlay}
-            playing={playerState.playing}
-          />
-        </div>
-        <div className={styles.inner}>
-          <div className={styles.wrap}>
-            <Image
-              className={styles.image}
-              alt={alt}
-              src={imgUrl}
-              fill
-              object-fit='cover'
-              sizes='100%'
-            />
+        <div className={styles.outer}>
+          <div className={styles.inner}>
+            <div className={styles.video}>
+              <ResponsiveVideo
+                url={vidUrl}
+                mute={true}
+                autoPlay={false}
+                playing={playerState.playing}
+              />
+            </div>
+            <div className={styles.image}>
+              <div className={styles.wrap}>
+                <Image
+                  alt={alt}
+                  src={imgUrl}
+                  fill
+                  object-fit='cover'
+                  sizes='100%'
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

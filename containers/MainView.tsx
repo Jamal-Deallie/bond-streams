@@ -1,100 +1,70 @@
-import { useEffect, useState, useRef } from 'react';
-import SliderRow from '@/components/SliderRow';
-import Slider from '@/components/Slider';
-import Banner from '@/containers/Banner';
-import Modal from '@/components/Menu';
 import { useCallback } from 'react';
+import SliderRow from '@/components/SliderRow';
+import Banner from '@/containers/Banner';
 import styles from '@/styles/containers/mainView.module.scss';
-import { responsiveSm, responsiveLrg } from '@/data/data';
-import { useRouter } from 'next/router';
-import { useGetThumbnailQuery } from '../generated/global/graphql';
-import graphqlRequestClient from 'lib/graphqlRequestClient';
-import { MovieEntityResponse } from '../generated/global/graphql';
-import ContentCard from '@/components/ContentCard';
-import CollectionCarousel from '@/components/CollectionCarousel';
-import ContentCarousel from '@/components/ContentCarousel';
-import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayout';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import NavColorChange from '@/components/NavColorChange';
+import { responsiveSm, responsiveLrg } from '@/src/data/data';
+import { useGetThumbnailQuery } from '../src/global/graphql';
+import graphqlRequestClient from '@/src/lib/graphqlRequestClient';
+import { GetThumbnailQuery } from '../src/global/graphql';
+import Loading from '@/components/Loading';
+import Error from '@/components/Error';
+import Slider from '@/components/Slider';
 
-interface Props {
+type MainViewProps = {
   deviceType?: string;
-}
+};
 
-const MainView = ({ deviceType }: Props) => {
-  const [items, setItems] = useState<any>();
-  const { data, isLoading } = useGetThumbnailQuery(graphqlRequestClient, {});
-  const router = useRouter();
-  // const bgColor = router.route === '/' ? '#fffefc' : 'transparent';
-  // const root = useRef<HTMLDivElement>(null);
-  // const tl = useRef<gsap.core.Timeline | null>(null);
-
-  // useIsomorphicLayoutEffect(() => {
-  //   gsap.registerPlugin(ScrollTrigger);
-  //   tl.current = gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: root.current,
-  //       start: 'top-=80',
-  //       end: '+=400',
-  //       toggleActions: 'play complete reverse reset',
-  //     },
-  //   });
-
-  //   tl.current.fromTo(
-  //     '#navbar',
-  //     { backgroundColor: 'transparent' },
-  //     {
-  //       backgroundColor: '#141414',
-  //       ease: 'sine.inOut',
-  //       duration: 0.2,
-  //     }
-  //   );
-  // }, []);
-
-  useEffect(() => {
-    if (!isLoading && data) {
-      const { movies } = data;
-
-      setItems(data.movies);
-    }
-  }, [isLoading, data]);
+const MainView = ({ deviceType }: MainViewProps) => {
+  const { data, isLoading, error } = useGetThumbnailQuery<
+    GetThumbnailQuery,
+    Error
+  >(graphqlRequestClient, {});
 
   const contentSlider = useCallback(() => {
-    if (!items) {
-      return <div>Something Went Wrong</div>;
+    if (isLoading) {
+      return <Loading />;
+    } else if (error) {
+      return <Error />;
     } else {
       return (
-        <ContentCarousel
+        <Slider
           deviceType={deviceType}
           responsive={responsiveSm}
-          items={items}
+          items={data}
+          type={'sm'}
         />
       );
     }
-  }, [items, deviceType]);
+  }, [data, deviceType, error, isLoading]);
 
   return (
-    <NavColorChange preColor={'transparent'} postColor={'rgba(20, 20, 20, 1)'}>
-      <div className={styles.container}>
-        <div className={styles.outer}>
-          <SliderRow title={'Bond Collections'}>
-            <CollectionCarousel
-              deviceType={deviceType}
-              responsive={responsiveLrg}
-              type={'lrg'}
-            />
-          </SliderRow>
-          <SliderRow title={'New Releases'}>{contentSlider()}</SliderRow>
+    <div className={styles.container}>
+      <div className={styles.outer}>
+        <SliderRow title={'Bond Collection'}>
+          <Slider
+            deviceType={deviceType}
+            responsive={responsiveLrg}
+            type={'lrg'}
+            infinite={false}
+            arrowDisabled={true}
+          />
+        </SliderRow>
 
-          <SliderRow title={'New Releases'}>{contentSlider()}</SliderRow>
-          <SliderRow title={'New Releases'}>{contentSlider()}</SliderRow>
-
-          <Banner />
-        </div>
+        <SliderRow title={'Recently Added'}>{contentSlider()}</SliderRow>
+        <SliderRow title={'Oscar-Winning Films'}>{contentSlider()}</SliderRow>
+        <SliderRow title={'Critically Acclaimed'}>{contentSlider()}</SliderRow>
+        <Banner />
+        <SliderRow title={'Originals'}>{contentSlider()}</SliderRow>
+        <SliderRow title={'Documentaries'}>{contentSlider()}</SliderRow>
+        <SliderRow title={'Memorable Bond Girls'}>{contentSlider()}</SliderRow>
       </div>
-    </NavColorChange>
+    </div>
   );
 };
 
 export default MainView;
+
+// Oscar-Winning Films
+// Documentaries
+// Critically Acclaimed
+// Originals

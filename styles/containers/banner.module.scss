@@ -1,12 +1,10 @@
 @use '../utils/utils' as *;
 
 .container {
-  margin: $space-2xl-3xl 0;
+  margin-bottom: $space-xl;
   position: relative;
   max-height: 60.5rem;
-
   width: 100%;
-
   background-color: $primary-variant;
   .outer {
     display: flex;
@@ -35,7 +33,7 @@
     .content {
       padding: $space-m 0;
       color: $secondary-variant;
-      // z-index: 1;
+      z-index: 1;
       margin-inline: $space-m;
       h1 {
         font-size: 5.96rem;

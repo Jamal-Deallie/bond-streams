@@ -5,7 +5,7 @@ import styles from '@/styles/components/layout.module.scss';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { useRouter } from 'next/router';
-import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayout';
+import { useIsomorphicLayoutEffect } from '@/src/hooks/useIsomorphicLayout';
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const root = useRef<HTMLDivElement>(null);

@@ -1,9 +1,8 @@
 @use '../utils/utils' as *;
 
 .container {
-  width: 100%;
-  height: 100vh;
-  background-color: $secondary-variant;
+  width: fit-content;
+  height: fit-content;
 }
 
 .loading {
@@ -20,12 +19,24 @@
   box-shadow: 0 0 1rem rgba(60, 100, 150, 0.25);
 }
 
-.dot-2 { animation: animate-to-2 1.5s infinite; }
-.dot-3 { animation: animate-to-3 1.5s infinite; }
-.dot-1 { animation: animate-to-1 1.5s infinite; }
-.dot-4 { animation: animate-to-4 1.5s infinite; }
-.dot-0 { animation: animate-to-0 1.5s infinite; }
-.dot-5 { animation: animate-to-5 1.5s infinite; }
+.dot-2 {
+  animation: animate-to-2 1.5s infinite;
+}
+.dot-3 {
+  animation: animate-to-3 1.5s infinite;
+}
+.dot-1 {
+  animation: animate-to-1 1.5s infinite;
+}
+.dot-4 {
+  animation: animate-to-4 1.5s infinite;
+}
+.dot-0 {
+  animation: animate-to-0 1.5s infinite;
+}
+.dot-5 {
+  animation: animate-to-5 1.5s infinite;
+}
 
 @keyframes animate-to-2 {
   25%,

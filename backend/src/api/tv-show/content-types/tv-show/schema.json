@@ -22,15 +22,10 @@
       "type": "string"
     },
     "plot": {
-      "type": "string"
+      "type": "text"
     },
-    "releaseDate": {
+    "releaseYear": {
       "type": "string"
-    },
-    "actors": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::actor.actor"
     },
     "genre": {
       "type": "string"
@@ -39,6 +34,34 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::season.season"
+    },
+    "popularity": {
+      "type": "string"
+    },
+    "thumbnail": {
+      "type": "string"
+    },
+    "trailer": {
+      "type": "string"
+    },
+    "mobile_img": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    },
+    "cast": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cast.cast"
+    },
+    "type": {
+      "type": "string"
+    },
+    "numOfSeasons": {
+      "type": "integer"
     }
   }
 }

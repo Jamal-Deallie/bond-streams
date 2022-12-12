@@ -1,16 +1,35 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import styles from '@/styles/components/menu.module.scss';
 import Link from 'next/link';
-import { useRef, useEffect, useState, useCallback } from 'react';
-import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayout';
+import { useRef, useEffect, useState, useCallback, ReactNode } from 'react';
+import { useIsomorphicLayoutEffect } from '@/src/hooks/useIsomorphicLayout';
 import { signOut } from 'next-auth/react';
 import gsap from 'gsap';
 
-const Menu = () => {
+type MenuProps = {
+  name?: string | null;
+};
+const Menu = ({ name }: MenuProps) => {
   const [openMenu, setOpenMenu] = useState(false);
   const tl = useRef<gsap.core.Timeline | null>(null);
   const root = useRef<HTMLDivElement | null>(null);
   const label = useRef(null);
+  const router = useRouter();
+  const outside = useRef<HTMLDivElement | null>(null);
+
+  let firstName = () => {
+    const firstIndx: string[] | undefined = name?.split(/(\s+)/);
+    return (
+      <p ref={label}>{firstIndx ? `Hello ${firstIndx[0]}` : 'My Profile'}</p>
+    );
+  };
+
+  const logOut = async () => {
+    await signOut({
+      callbackUrl: '/',
+    });
+  };
 
   const openShopMenu = useCallback(
     () => setOpenMenu(openMenu => !openMenu),
@@ -19,12 +38,9 @@ const Menu = () => {
   );
 
   useIsomorphicLayoutEffect(() => {
-    //@ts-ignore
-    tl.current = gsap.timeline({ pause: true });
-
     let ctx = gsap.context(() => {
-      //@ts-ignore
-      tl.current
+      tl.current = gsap
+        .timeline({ pause: true })
         .fromTo(
           root.current,
           { yPercent: -105 },
@@ -34,7 +50,8 @@ const Menu = () => {
           label.current,
           { color: 'rgba(20, 20, 20, 1)', ease: 'circ.in' },
           '<'
-        );
+        )
+        .to(outside.current, { display: 'block', opacity: 1 });
     });
 
     return () => ctx.revert();
@@ -49,7 +66,7 @@ const Menu = () => {
     <>
       <div className={styles.container} onClick={openShopMenu}>
         <div className={styles.outer}>
-          <p ref={label}>My Profile</p>
+          <>{firstName()}</>
           <div role='button' className={styles.wrap}>
             <div className={styles.image}>
               <Image
@@ -80,13 +97,15 @@ const Menu = () => {
           <li
             role='button'
             onClick={e => {
-              e.preventDefault();
-              signOut({ callbackUrl: '/' });
+              // e.preventDefault();
+              // signOut({ callbackUrl: '/' });\
+              logOut();
             }}>
             Sign Out
           </li>
         </ul>
       </div>
+      <div className={styles.outside} ref={outside} onClick={openShopMenu} />
     </>
   );
 };

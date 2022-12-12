@@ -20,8 +20,9 @@
     "paths": {
       "@/components/*": ["./components/*"],
       "@/containers/*": ["./containers/*"],
-      "@/data/*": ["./data/*"],
-      "@/hooks/*": ["./hooks/*"],
+      "@/data/*": ["src/data/*"],
+      "@/src/*": ["./src/*"],
+      "@/hooks/*": ["src/hooks/*"],
       "@/styles/*": ["/styles/*"],
       "@/helpers/*": ["helpers/*"],
       "@/animations/*": ["./animations/*"],

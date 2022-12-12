@@ -9,11 +9,12 @@ export const DynamicControl = ({
   config = {},
 }: DynamicFieldData) => {
   const { register } = useFormContext();
-
+  
   switch (inputType) {
     case 'text':
       return (
         <input
+          id={fieldName}
           className={styles.input}
           type='text'
           {...register(fieldName, config)}
@@ -23,6 +24,7 @@ export const DynamicControl = ({
     case 'password':
       return (
         <input
+          id={fieldName}
           className={styles.input}
           type='password'
           {...register(fieldName, config)}
@@ -32,6 +34,7 @@ export const DynamicControl = ({
     case 'email':
       return (
         <input
+          id={fieldName}
           className={styles.input}
           type='email'
           {...register(fieldName, config)}

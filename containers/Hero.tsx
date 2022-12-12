@@ -4,7 +4,6 @@ import Button from '@/components/Button';
 import ResponsiveVideo from '@/components/ResponsiveVideo';
 
 const Hero = () => {
-  // const https://res.cloudinary.com/dp5qjsiff/video/upload/v1668294815/Bond/bond_trailer_vay7hq.mp4
   return (
     <div className={styles.container}>
       <div className={styles.outer}>
@@ -16,6 +15,7 @@ const Hero = () => {
             }
             autoPlay={true}
             playing={true}
+            loop={true}
           />
         </div>
         <div className={styles.overlay}>
@@ -27,10 +27,10 @@ const Hero = () => {
               </h1>
 
               <p>
-                Unlimited movies, TV shows, and more. Watch anywhere. Cancel
+                Unlimited movies, TV shows, and more in stunning 4K UHD. Watch anywhere at
                 anytime.
               </p>
-              <Link href='signup'>
+              <Link href='register'>
                 <Button variant='primary'>Get Started</Button>
               </Link>
             </div>

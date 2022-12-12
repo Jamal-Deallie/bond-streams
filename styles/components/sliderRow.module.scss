@@ -1,13 +1,15 @@
 @use '../utils/utils' as *;
+
 .container {
-  margin-left: $space-xl;
-
+  padding-left: $space-xl;
+  position: relative;
+  height: fit-content;
   .category {
-    margin: $space-m 0;
-    h3 {
-      font-size: 3.052rem;
-      color: $primary-variant;
 
+    h3 {
+      font-size: $space-l;
+      color: $primary-variant;
+      padding-inline: 1rem;
       @include respond-below(xs) {
         font-size: 2.441rem;
         line-height: 26px;
@@ -18,7 +20,7 @@
 
   .wrap {
     position: relative;
-    height: 100%;
+    height: fit-content;
     margin-bottom: $space-xl;
   }
 }

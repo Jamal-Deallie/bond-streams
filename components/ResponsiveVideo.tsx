@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import ReactPlayer from 'react-player';
+import ReactPlayer from 'react-player/lazy'
 
 type VideoProps = {
   url?: string;
@@ -9,9 +9,15 @@ type VideoProps = {
   playing?: boolean;
 };
 
-const ResponsiveVideo = ({ url, mute, autoPlay, playing }: VideoProps) => {
+const ResponsiveVideo = ({
+  url,
+  mute,
+  autoPlay,
+  playing,
+  loop = false,
+}: VideoProps) => {
   const [hasWindow, setWindow] = useState(false);
-
+  // console.log(loop);
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setWindow(true);
@@ -27,7 +33,7 @@ const ResponsiveVideo = ({ url, mute, autoPlay, playing }: VideoProps) => {
           playing={playing}
           muted={mute}
           autoPlay={autoPlay}
-          loop={false}
+          loop={loop}
           controls={false}
           volume={1}
           url={url}

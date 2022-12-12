@@ -1,98 +1,78 @@
-import { FormProvider, useForm, SubmitHandler } from 'react-hook-form';
-import { SignInData } from 'types/typings';
-import { DynamicFieldData } from '@/typings/dynamic-control-types';
-import { DynamicControl } from '@/components/DynamicControl';
-import { ErrorMessage } from '@hookform/error-message';
 import { useEffect } from 'react';
-import { signIn, signOut, useSession } from 'next-auth/react';
-import styles from '@/styles/components/form.module.scss';
+import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
+import { signIn } from 'next-auth/react';
+import styles from '@/styles/components/fields.module.scss';
 
-interface FormProps {
-  fields: DynamicFieldData[];
-}
+type SigninFormProps = {
+  email?: '';
+  password?: '';
+};
 
-const SigninForm = ({ fields }: FormProps) => {
-  const formMethods = useForm<SignInData>({
-    defaultValues: {
-      email: '',
-      password: '',
-    },
-  });
+const signinSchema = Yup.object().shape({
+  email: Yup.string().required('Email is required').email('Email is invalid'),
+  password: Yup.string()
+    .required('Password is required')
+    .min(8, 'Password must be at 8 char long'),
+});
+
+const SigninForm = () => {
+  const router = useRouter();
 
   const {
-    reset,
+    register,
     handleSubmit,
-    formState,
-    formState: { isSubmitting, errors },
-  } = formMethods;
-
-  // const onSubmit = async () => {
-  //   try {
-  //     const requestOptions = {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body: JSON.stringify({
-  //         username: 'jamalS',
-  //         email: 'deat@gmail.com',
-  //         password: '123456678',
-  //         repeatPassword: '123456678',
-  //       }),
-  //     };
-  //     const response = await fetch(
-  //       `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/auth/local/register`,
-  //       requestOptions
-  //     );
-  //     const data = await response.json();
-  //    
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+    reset,
+    formState: { errors, isSubmitSuccessful, isSubmitting },
+  } = useForm<SigninFormProps>({
+    resolver: yupResolver(signinSchema),
+  });
 
   useEffect(() => {
-    if (formState.isSubmitSuccessful) {
-      reset({
-        email: '',
-        password: '',
-      });
+    if (isSubmitSuccessful) {
+      reset();
     }
-  }, [formState.isSubmitSuccessful, reset]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSubmitSuccessful]);
 
   const onSubmit = handleSubmit(async data => {
-
-
     const res = await signIn('credentials', {
       email: data.email,
       password: data.password,
+      callbackUrl: `${window.location.origin}/browse`,
       redirect: false,
     });
-
+    if (res?.error) alert(res.error);
+    if (res?.url) router.push(res.url);
   });
 
   return (
-    <form onSubmit={onSubmit} className={styles.container}>
-      <FormProvider {...formMethods}>
-        {fields.map((d, i) => (
-          <div key={i} className={styles.outer}>
-            <label htmlFor={d.fieldName}>{d.label}</label>
+    <div className={styles.container}>
+      {isSubmitSuccessful ? <p>Registration Success</p> : null}
+      <form onSubmit={onSubmit} className={styles.form}>
+        <div className={styles.field}>
+          <label> Email</label>
+          <input type='email' {...register('email')} />
+          {errors.email ? (
+            <p style={{ color: 'red' }}>{errors.email?.message}</p>
+          ) : null}
+        </div>
+        <div className={styles.field}>
+          <label>Password</label>
+          <input type='password' {...register('password')} />
+          {errors.password ? (
+            <p style={{ color: 'red' }}>{errors.password.message}</p>
+          ) : null}
+        </div>
 
-            <DynamicControl {...d} />
-
-            <ErrorMessage
-              errors={errors}
-              //@ts-ignore
-              name={d.fieldName}
-              render={({ message }) => <p>{message}</p>}
-            />
-          </div>
-        ))}
-      </FormProvider>
-      <div className={styles.button}>
-        <button type='submit' disabled={isSubmitting}>
-          {isSubmitting ? 'Submitting' : 'Submit'}
+        <button type='submit'>
+          {/* {isSubmitting ? <span>Submitting...</span> : <span>Submit</span>} */}
+          Submit
         </button>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 

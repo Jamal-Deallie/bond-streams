@@ -10,10 +10,10 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-graphql": "4.5.2",
-    "@strapi/plugin-i18n": "4.5.2",
-    "@strapi/plugin-users-permissions": "4.5.2",
-    "@strapi/strapi": "4.5.2",
+    "@strapi/plugin-graphql": "4.5.3",
+    "@strapi/plugin-i18n": "4.5.3",
+    "@strapi/plugin-users-permissions": "4.5.3",
+    "@strapi/strapi": "4.5.3",
     "better-sqlite3": "7.4.6"
   },
   "author": {
@@ -22,6 +22,7 @@
   "strapi": {
     "uuid": "830954e9-7813-4f49-aab1-4130338f318a"
   },
+  "resolutions": { "@graphql-tools/utils": "8.6.7" },
   "engines": {
     "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"

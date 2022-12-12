@@ -3,7 +3,7 @@ import styles from '@/styles/components/feature.module.scss';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import Image from 'next/image';
-import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayout';
+import { useIsomorphicLayoutEffect } from '@/src/hooks/useIsomorphicLayout';
 import Link from 'next/link';
 import ResponsiveVideo from '@/components/ResponsiveVideo';
 import Button from '@/components/Button';
@@ -29,10 +29,10 @@ function Feature() {
     mm.add(
       { isDesktop: '(min-width: 767px)' },
       context => {
-        const tl = gsap.timeline({
+        tl.current = gsap.timeline({
           scrollTrigger: {
             trigger: root.current,
-            start: 'top top',
+            start: 'top-=80',
           },
         });
         gsap.set('#video', { opacity: 0, display: 'none' });
@@ -44,7 +44,7 @@ function Feature() {
             zIndex: 3,
           })
           .to('#video', {
-            delay: 60,
+            delay: 24,
             opacity: 0,
             display: 'none',
             duration: 1,
@@ -76,7 +76,7 @@ function Feature() {
               id='splash'
               priority
               alt=''
-              src='https://res.cloudinary.com/dp5qjsiff/image/upload/f_auto,q_auto/v1669504928/Bond/browse_daylights_hinlin.jpg'
+              src='/images/browse_daylights.webp'
               width={1440}
               height={810}
               sizes='100vw'
@@ -88,7 +88,7 @@ function Feature() {
             <Image
               className={styles.mobile}
               alt=''
-              src='https://res.cloudinary.com/dp5qjsiff/image/upload/f_auto,q_auto/v1669595292/Bond/mobile_daylights_s6xfzk.png'
+              src='/images/mobile_daylights.webp'
               width={800}
               height={134}
               sizes='100vw'
@@ -98,6 +98,7 @@ function Feature() {
               }}
             />
           </div>
+
           <div id='video' className={styles.video}>
             <ResponsiveVideo
               mute={playerState.isMuted}

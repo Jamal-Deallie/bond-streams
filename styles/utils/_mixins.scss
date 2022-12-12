@@ -35,31 +35,14 @@
   @content;
 }
 
-@mixin fluid-font($min-width, $max-width, $min-font-size, $max-font-size) {
-  $unit1: unit($min-width);
-  $unit2: unit($max-width);
-  $unit3: unit($min-font-size);
-  $unit4: unit($max-font-size);
-  @if $unit1 == $unit2 and $unit1 == $unit3 and $unit1 == $unit4 {
-    & {
-      font-size: $min-font-size;
-      line-height: $min-font-size * 1.618;
-      @media screen and (min-width: $min-width) {
-        font-size: calc(
-          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
-            ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)})
-        );
-        line-height: calc(
-          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
-            1.618 *
-            ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)})
-        );
-      }
-      @media screen and (min-width: $max-width) {
-        font-size: $max-font-size;
-        line-height: $max-font-size * 1.618;
-      }
-    }
+@mixin fluid-font($min-font-size, $mid-font-size, $max-font-size) {
+  font-size: $min-font-size;
+
+  @media screen and (min-width: 400px) {
+    font-size: $mid-font-size;
+  }
+  @media screen and (min-width: 1440px) {
+    font-size: $max-font-size;
   }
 }
 
@@ -98,23 +81,23 @@
   display: flex;
   flex-direction: column;
 }
- 
+
 @mixin flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
- 
+
 @mixin flex-center-column {
   @include flex-center;
   flex-direction: column;
 }
- 
+
 @mixin flex-center-y {
   display: flex;
   align-items: center;
 }
- 
+
 @mixin flex-center-x {
   display: flex;
   justify-content: center;

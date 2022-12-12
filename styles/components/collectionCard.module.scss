@@ -2,63 +2,65 @@
 
 .container {
   position: relative;
-  aspect-ratio: 3/2;
+  aspect-ratio: 16 / 9;
   width: 100%;
   height: auto;
-  outline: 3.5px solid $primary-variant;
-  border-radius: 1.5rem;
-  box-shadow:
-      /* offset-x | offset-y | blur-radius | spread-radius | color */ 0px
-      1rem 1rem 0px hsla(0, 0%, 0%, 0.7),
-    1rem 1rem 2rem 0px hsla(0, 0%, 0%, 0.7),
-    0px 0.3rem 0.5rem -0.1rem hsla(0, 0%, 0%, 0.2);
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  cursor: pointer;
 
-  .video {
-    height: 100%;
+  .outer {
+    overflow: hidden;
+    position: relative;
     aspect-ratio: 16 / 9;
-    position: absolute;
-    display: none;
-    z-index: 1;
-    opacity: 1;
-    display: block;
-    opacity: 0;
-    transform: all 350ms ease-in-out;
-  }
-  .inner {
-    height: 100%;
     width: 100%;
-    z-index: 1;
-    position: absolute;
-    .wrap {
-      aspect-ratio: 227 / 127;
-      width: 120%;
-      height: auto;
+    height: auto;
+  
+    cursor: pointer;
+    padding: 1rem;
+    // background: linear-gradient(to right, #e3c497, $primary-variant);
+    border-radius: 1rem;
+
+    .inner {
       position: relative;
-      display: block;
+      border-radius: 1rem;
+      border: solid 5px $primary-variant;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+      @include flex-center;
+
+      .video {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        position: absolute;
+        display: none;
+        z-index: 1;
+        display: block;
+        opacity: 0;
+        transform: all 350ms ease-in-out;
+      }
+      .image {
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        position: absolute;
+        @include flex-center;
+
+        .wrap {
+          aspect-ratio: 16 / 9;
+
+          width: 100%;
+          height: auto;
+          position: relative;
+          display: block;
+        }
+      }
+
+      &:hover .video {
+        z-index: 2;
+        opacity: 1;
+        display: block;
+      }
     }
   }
-
-  &:hover .video {
-    z-index: 2;
-    opacity: 1;
-    display: block;
-  }
-}
-
-.container:after {
-  content: '';
-  background: linear-gradient(transparent 0%, rgba(26, 27, 29, 0.77) 100%);
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  position: absolute;
 }

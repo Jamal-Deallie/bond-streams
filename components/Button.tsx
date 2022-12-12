@@ -10,7 +10,7 @@ export interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: string | ReactNode;
   onClick?: () => void;
   icon?: ReactElement;
-  variant: 'primary' | 'secondary' | 'tertiary';
+  variant: 'primary' | 'secondary' | 'tertiary' | 'transparent' | 'outline';
   isLoading?: boolean;
 }
 
@@ -33,6 +33,12 @@ const Button = ({
         break;
       case 'tertiary':
         return styles.tertiary;
+        break;
+      case 'transparent':
+        return styles.transparent;
+        break;
+      case 'outline':
+        return styles.outline;
         break;
     }
   }, [variant]);

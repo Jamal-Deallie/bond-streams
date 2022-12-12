@@ -1,17 +1,60 @@
-import { useCallback } from 'react';
-import Carousel from 'react-multi-carousel';
-import ContentCard from '@/components/ContentCard';
-import CollectionCard from '@/components/CollectionCard';
-import { MovieEntityResponse } from '../generated/global/graphql';
+import { DynamicFieldData } from '../../types/dynamic-control-types';
+import { ResponsiveData } from '../../types/typings';
 
-interface Props {
-  deviceType?: string;
-  responsive: any;
-  type: string;
-  items?: any;
-}
+export const responsiveSm: ResponsiveData = {
+  desktop: {
+    breakpoint: { max: 3000, min: 768 },
+    items: 4,
+    paritialVisibilityGutter: 0,
+  },
+  tablet: {
+    breakpoint: { max: 768, min: 464 },
+    items: 3,
+    paritialVisibilityGutter: 50,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 2,
+    paritialVisibilityGutter: 30,
+  },
+};
+export const responsiveLrg: ResponsiveData = {
+  desktop: {
+    breakpoint: { max: 3000, min: 768 },
+    items: 3,
+    paritialVisibilityGutter: 0,
+  },
+  tablet: {
+    breakpoint: { max: 768, min: 464 },
+    items: 3,
+    paritialVisibilityGutter: 50,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 2,
+    paritialVisibilityGutter: 30,
+  },
+};
 
-const collectionProps = [
+export const linkOptions = [
+  {
+    id: 3,
+    label: 'Movies',
+    url: '/',
+  },
+  {
+    id: 4,
+    label: 'Series',
+    url: '/',
+  },
+  {
+    id: 5,
+    label: 'Documentaries',
+    url: '/',
+  },
+];
+
+export const collectionProps = [
   {
     id: 1,
     alt: 'Connery Collection',
@@ -80,24 +123,3 @@ const collectionProps = [
     autoPlay: false,
   },
 ];
-const CollectionCarousel = ({ deviceType, responsive }: Props) => {
-  const cards = useCallback(() => {
-    if (collectionProps) {
-      return collectionProps.map(props => {
-        return <CollectionCard key={props.id} {...props} />;
-      });
-    }
-  }, []);
-
-  return (
-    <Carousel
-      ssr
-      deviceType={deviceType}
-      itemClass='image-item'
-      responsive={responsive}>
-      {cards()}
-    </Carousel>
-  );
-};
-
-export default CollectionCarousel;

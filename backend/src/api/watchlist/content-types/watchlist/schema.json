@@ -4,23 +4,24 @@
   "info": {
     "singularName": "watchlist",
     "pluralName": "watchlists",
-    "displayName": "Watchlist"
+    "displayName": "Watchlist",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "users_permissions_users": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "plugin::users-permissions.user",
-      "mappedBy": "watchlist"
-    },
     "movies": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::movie.movie"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "user"
     }
   }
 }
