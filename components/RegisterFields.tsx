@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import styles from '@/styles/components/fields.module.scss';
+import styles from '@/styles/components/Fields.module.scss';
 import Spinner from '@/components/Spinner';
 import { useRegisterMutation } from '@/src/graphql/generated/global/graphql';
 import graphqlRequestClient from '@/src/lib/graphqlRequestClient';

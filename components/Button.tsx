@@ -4,7 +4,7 @@ import {
   useCallback,
   ReactNode,
 } from 'react';
-import styles from '@/styles/components/button.module.scss';
+import styles from '@/styles/components/Button.module.scss';
 
 export interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: string | ReactNode;

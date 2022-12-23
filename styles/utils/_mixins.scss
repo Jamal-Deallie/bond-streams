@@ -1,5 +1,14 @@
 @use './variables' as *;
 
+$breakpoints: (
+  'xs': 400px,
+  'sm': 544px,
+  'md': 768px,
+  'lg': 960px,
+  'xl': 1280px,
+  'xxl': 1440px,
+);
+
 @mixin container {
   padding: $space-2xl-3xl $space-l-xl;
 }
@@ -105,9 +114,14 @@
 
 @mixin even-cols {
   display: flex;
+  gap: $space-m $space-m;
   width: 100%;
   > * {
     flex-basis: 100%;
+  }
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
   }
   @content;
 }
@@ -117,4 +131,18 @@
   width: 99%;
   flex-wrap: wrap;
   @content;
+}
+
+@mixin subtitle {
+  width: 100%;
+  max-width: 50rem;
+  font-size: 1.8rem;
+  @include respond-above(md) {
+    font-size: 2.441rem;
+  }
+}
+
+@mixin title {
+  font-size: clamp(3.18rem, 5.26vw + 2.99rem, 9rem);
+  color: $primary-variant;
 }

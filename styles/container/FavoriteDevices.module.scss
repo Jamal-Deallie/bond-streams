@@ -1,0 +1,75 @@
+@use '../utils/utils' as *;
+
+.container {
+  margin-top: $space-2xl-3xl;
+  max-width: 192rem;
+  margin-inline: auto;
+
+  .flex {
+    @include even-cols;
+    height: 100%;
+  }
+  .content {
+    padding-right: $space-s;
+    @include respond-above(md) {
+      padding-left: $space-s;
+      padding-right: 0px;
+    }
+
+    @include flex-center-x;
+    .outer {
+      width: 100%;
+      .inner {
+        margin-inline: auto;
+        max-width: 60rem;
+
+        width: 80%;
+        @include respond-above(md) {
+          width: 100%;
+        }
+        h1 {
+          font-size: clamp(3.18rem, 5.26vw + 2.99rem, 9rem);
+          color: $primary-variant;
+        }
+
+        p {
+          @include subtitle;
+        }
+      }
+    }
+  }
+  .device {
+    position: relative;
+    .cont {
+      top: 20%;
+      left: 10%;
+      position: absolute;
+      height: 100%;
+      width: 55%;
+    }
+    .wrap {
+      position: relative;
+      aspect-ratio: 530 / 298;
+      display: block;
+      width: 100%;
+      height: auto;
+      .gif {
+        top: 0;
+        position: absolute;
+        display: block;
+        aspect-ratio: 530 / 298;
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .image {
+      aspect-ratio: 232 / 133;
+      position: relative;
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+}

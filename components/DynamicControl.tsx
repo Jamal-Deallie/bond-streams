@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 import { DynamicFieldData } from '@/typings/dynamic-control-types';
-import styles from '@/styles/components/dynamicControl.module.scss';
+import styles from '@/styles/components/DynamicControl.module.scss';
 export const DynamicControl = ({
   inputType,
   fieldName,

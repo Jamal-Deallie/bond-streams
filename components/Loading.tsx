@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import styles from '@/styles/components/loading.module.scss';
+import styles from '@/styles/components/Loading.module.scss';
 type Props = {};
 
 const Loading = (props: Props) => {

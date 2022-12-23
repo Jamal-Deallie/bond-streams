@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { signIn } from 'next-auth/react';
-import styles from '@/styles/components/fields.module.scss';
+import styles from '@/styles/components/Fields.module.scss';
 
 type SigninFormProps = {
   email?: '';

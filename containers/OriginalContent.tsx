@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import styles from '@/styles/containers/OriginalContent.module.scss';
-type Props = {};
 
-const OriginalContent = (props: Props) => {
+
+const OriginalContent = () => {
   return (
     <div className={styles.container}>
       <div className={styles.outer}>
@@ -21,7 +21,7 @@ const OriginalContent = (props: Props) => {
           </div>
           <div className={styles.content}>
             <div className={styles.inner}>
-              <h1>Visionary Original Series and 60 Years of films</h1>
+              <h1>Visionary Original Series & 60 Years of films</h1>
               <p>
                 With a continuously-updated library of groundbreaking shows,
                 movies and docuseries, Bond + brings fresh and diverse

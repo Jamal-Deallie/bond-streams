@@ -1,0 +1,94 @@
+@use '../utils/utils' as *;
+
+.nav {
+  height: 7.5rem;
+  position: fixed;
+  width: 100%;
+  z-index: 300;
+  background-color: $tertiary-variant;
+}
+.container {
+  padding-inline: $space-m;
+  height: 7.5rem;
+  @include flex-center-y;
+  justify-content: space-between;
+  width: 100%;
+
+  .options {
+    @include flex-center-y;
+    gap: $space-2xl-3xl;
+
+    .links {
+      ul {
+        @include flex-center-y;
+        gap: 3rem;
+        color: $tertiary-variant;
+      }
+      li {
+        width: fit-content;
+        position: relative;
+      }
+    }
+  }
+}
+
+.logo {
+  width: 12rem;
+  svg {
+    filter: drop-shadow(1px 1.5px 1.75px rgb(0 0 0 / 0.4));
+  }
+  z-index: 12;
+  opacity: 1;
+}
+
+.buttons {
+  button {
+    @include flex-center-y;
+    gap: 1rem;
+    outline: 2px solid $primary-variant;
+    border-radius: 0.25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: $body-font;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    justify-content: center;
+    font-weight: 400;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: 1.2rem 2.5rem;
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+    background-color: $secondary-variant;
+    color: $primary-variant;
+  }
+
+  button:hover,
+  button:focus {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    opacity: 0.8;
+  }
+
+  button:hover {
+    transform: translateY(-1px);
+  }
+
+  button:active {
+    background-color: #f0f0f1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
+  }
+}

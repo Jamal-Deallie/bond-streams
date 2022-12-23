@@ -1,5 +1,5 @@
 import { ReactNode, useCallback } from 'react';
-import styles from '@/styles/containers/form.module.scss';
+import styles from '@/styles/containers/Form.module.scss';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 

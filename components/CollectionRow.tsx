@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import CollectionCard from '@/components/CollectionCard';
 import { collectionProps } from '../src/data/data';
-import styles from '@/styles/components/collectionRow.module.scss';
+import styles from '@/styles/components/CollectionRow.module.scss';
 
 const CollectionCarousel = () => {
   const cards = useCallback(() => {

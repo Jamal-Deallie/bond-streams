@@ -1,4 +1,4 @@
-import styles from '@/styles/components/accordion.module.scss';
+import styles from '@/styles/components/Accordion.module.scss';
 type Props = {};
 
 const Accordion = (props: Props) => {

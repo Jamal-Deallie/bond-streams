@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import styles from '@/styles/components/feature.module.scss';
+import styles from '@/styles/components/Feature.module.scss';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import Image from 'next/image';

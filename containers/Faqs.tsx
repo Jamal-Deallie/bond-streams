@@ -1,5 +1,5 @@
 import Accordion from '@/components/Accordion';
-import styles from '@/styles/containers/faqs.module.scss';
+import styles from '@/styles/containers/Faqs.module.scss';
 type Props = {};
 
 const Faqs = (props: Props) => {

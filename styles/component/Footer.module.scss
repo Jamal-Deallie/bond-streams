@@ -1,0 +1,39 @@
+@use '../utils/utils' as *;
+
+.footer {
+  padding: $space-m-l $space-m;
+  border-top: solid 1.5px $primary-variant;
+  position: relative;
+  background-color: $secondary-variant;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $space-m $space-m;
+  .logo {
+    max-width: 37.5rem;
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+
+    svg {
+      width: 100%;
+    }
+
+    p {
+      font-size: 1.2rem;
+      width: max-content;
+      color: $tertiary-variant;
+    }
+  }
+
+  .links {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 2rem;
+    font-family: $body-font;
+    font-size: 1.2rem;
+    color: $tertiary-variant;
+    text-transform: uppercase;
+  }
+}

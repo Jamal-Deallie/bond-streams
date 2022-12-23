@@ -3,6 +3,7 @@ import { useIsomorphicLayoutEffect } from '@/src/hooks/useIsomorphicLayout';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { useRouter } from 'next/router';
+
 type NavColorChangeProps = {
   children: ReactNode;
   preColor?: string;
@@ -18,7 +19,7 @@ const NavColorChange = ({
   const tl = useRef<gsap.core.Timeline | null>(null);
   const { pathname } = useRouter();
   console.log(pathname);
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (pathname === '/' || '/browse') {
       document.body.classList.add('nav_change');
       gsap.registerPlugin(ScrollTrigger);

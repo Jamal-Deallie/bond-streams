@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '@/components/Card';
-import styles from '@/styles/containers/contentWrap.module.scss';
+import styles from '@/styles/containers/ContentWrap.module.scss';
 type Props = {};
 
 const ContentWrap = (props: Props) => {

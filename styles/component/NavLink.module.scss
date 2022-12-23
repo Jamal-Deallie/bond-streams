@@ -1,0 +1,85 @@
+@use '../utils/utils' as *;
+
+.link {
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  font-family: $heading-font;
+  font-size: 1.728rem;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: $primary-variant;
+    top: 100%;
+    left: 0;
+    pointer-events: none;
+  }
+  &:hover {
+    color: $primary-variant;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: $primary-variant;
+    top: 100%;
+    left: 0;
+    pointer-events: none;
+  }
+  &:before {
+    transform-origin: 100% 50%;
+    transform: scale3d(0, 1, 1);
+    transition: transform 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+  }
+
+  &:hover:before {
+    transform-origin: 0% 50%;
+    transform: scale3d(1, 1, 1);
+    transition-timing-function: cubic-bezier(0.4, 1, 0.8, 1);
+  }
+
+  &:after {
+    content: '';
+
+    transform-origin: 0% 50%;
+    transform: scale3d(0, 1, 1);
+    transition: transform 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+  }
+
+  &:hover:after {
+    top: calc(100% + 4px);
+    transform-origin: 100% 50%;
+    transform: scale3d(1, 1, 1);
+    transition-timing-function: cubic-bezier(0.4, 1, 0.8, 1);
+  }
+}
+
+.active {
+  color: $primary-variant;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: $primary-variant;
+    top: 100%;
+    left: 0;
+    pointer-events: none;
+  }
+  &:hover {
+    color: $primary-variant;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: $primary-variant;
+    top: 100%;
+    left: 0;
+    pointer-events: none;
+  }
+}

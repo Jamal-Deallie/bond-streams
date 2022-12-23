@@ -1,7 +1,5 @@
-import styles from '@/styles/components/contentItem.module.scss';
+import styles from '@/styles/components/ContentItem.module.scss';
 import ResponsiveImage from '@/components/ResponsiveImage';
-import ResponsiveVideo from '@/components/ResponsiveVideo';
-import Link from 'next/link';
 import Image from 'next/image';
 type Props = {};
 
@@ -11,11 +9,14 @@ const ContentItem = (props: Props) => {
       <div className={styles.outer}>
         <div className={styles.wrap}>
           <div className={styles.image}>
-            <ResponsiveImage url={'Bond/screenshot_goldfinger_pxykiq.png'} />
+            <ResponsiveImage
+              src={'Bond/screenshot_goldfinger_pxykiq.png'}
+              alt={'goldfinger'}
+            />
           </div>
         </div>
         <div className={styles.content}>
-        <div className={styles.inner}>
+          <div className={styles.inner}>
             <div className={styles.heading}>
               <div className={styles.title}>
                 <h1>Goldfinger</h1>

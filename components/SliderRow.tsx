@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import styles from '@/styles/components/sliderRow.module.scss';
+import styles from '@/styles/components/SliderRow.module.scss';
 type Props = {
   children: ReactNode;
   title?: string;

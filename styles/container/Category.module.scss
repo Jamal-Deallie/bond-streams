@@ -1,0 +1,11 @@
+@use '../utils/utils' as *;
+
+.container {
+  .outer {
+    place-content: center flex-start;
+    display: flex;
+    -webkit-box-pack: start;
+    flex-flow: row wrap;
+    margin: 0px 0px 0px -20px;
+  }
+}

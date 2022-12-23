@@ -1,10 +1,7 @@
 import { useRef, MouseEvent, useState } from 'react';
-import styles from '@/styles/components/collectionCard.module.scss';
+import styles from '@/styles/components/CollectionCard.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-
-import { gsap } from 'gsap/dist/gsap';
-import { useIsomorphicLayoutEffect } from '@/src/hooks/useIsomorphicLayout';
 import ResponsiveVideo from '@/components/ResponsiveVideo';
 
 type CardProps = {

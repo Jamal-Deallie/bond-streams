@@ -1,0 +1,54 @@
+@use '../utils/utils' as *;
+
+.container {
+  height: auto;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  .outer {
+    height: auto;
+    width: calc(100% - 3rem);
+    aspect-ratio: 16 / 9;
+    border-radius: 0.4rem;
+    overflow: hidden;
+    position: relative;
+    -webkit-box-shadow: -14px 12px 10px -10px rgba(36, 32, 34, 1);
+    -moz-box-shadow: -14px 12px 10px -10px rgba(36, 32, 34, 1);
+    box-shadow: -14px 12px 10px -10px rgba(36, 32, 34, 1);
+    transition: all 300ms ease-out;
+    &:hover {
+      box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px,
+        rgb(0 0 0 / 72%) 0px 30px 22px -10px;
+      scale: 1.1;
+    }
+    margin: 20px 0px 0px 20px;
+    flex: 0 0 auto;
+    &:hover .link {
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: auto;
+        border-radius: 0.4rem;
+        height: auto;
+
+        aspect-ratio: 16 / 9;
+        border: 0.5rem solid $primary-variant;
+        box-sizing: border-box;
+      }
+    }
+    .link {
+      .image {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        height: auto;
+      }
+    }
+  }
+}
+
+//  scale(1, 1) translateZ(0px);
+// box-shadow: rgba(247, 226, 195, 0.55) 0px 22px 80px 1px;

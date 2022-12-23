@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import styles from '@/styles/components/menu.module.scss';
+import styles from '@/styles/components/Menu.module.scss';
 import Link from 'next/link';
 import { useRef, useEffect, useState, useCallback, ReactNode } from 'react';
 import { useIsomorphicLayoutEffect } from '@/src/hooks/useIsomorphicLayout';

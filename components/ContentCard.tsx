@@ -1,4 +1,4 @@
-import styles from '@/styles/components/contentCard.module.scss';
+import styles from '@/styles/components/ContentCard.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 

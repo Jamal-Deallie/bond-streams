@@ -1,28 +1,35 @@
-import React from 'react';
-import { AdvancedImage, responsive, placeholder } from '@cloudinary/react';
-import { Cloudinary } from '@cloudinary/url-gen';
-import styles from '@/styles/components/responsiveImage.module.scss';
+import Image from 'next/image';
+;
 
 type ImageProps = {
-  url: string;
+  src: string;
+  alt: string;
+  height_ratio?: number;
+  width_ratio?: number;
+  height?: string;
+  width?: string;
+  fit?: string;
 };
 
-const cld = new Cloudinary({
-  cloud: {
-    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_KEY,
-  },
-});
-
-const ResponsiveImage = ({ url }: ImageProps) => {
-  let img = cld.image(url);
-  img.quality('auto').format('auto');
+const ResponsiveImage = ({
+  src,
+  alt,
+  height_ratio = 1,
+  width_ratio = 1,
+  height,
+  width,
+  fit,
+}: ImageProps) => {
   return (
-    <AdvancedImage
-      className={styles.image}
-      cldImg={img}
-      style={{ maxWidth: '100%' }}
-      plugins={[responsive(), placeholder()]}
-    />
+    <div
+      style={{
+        position: 'relative',
+        height: height,
+        width: width,
+        aspectRatio: width_ratio / height_ratio,
+      }}>
+      <Image alt={alt} src={src} fill object-fit={fit} sizes='100%' />
+    </div>
   );
 };
 

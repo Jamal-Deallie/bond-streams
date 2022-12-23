@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from '@/styles/containers/hero.module.scss';
+import styles from '@/styles/containers/Hero.module.scss';
 import Button from '@/components/Button';
 import ResponsiveVideo from '@/components/ResponsiveVideo';
 

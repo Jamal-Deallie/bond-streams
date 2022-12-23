@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import SliderRow from '@/components/SliderRow';
 import Banner from '@/containers/Banner';
-import styles from '@/styles/containers/mainView.module.scss';
+import styles from '@/styles/containers/MainView.module.scss';
 import { responsiveSm, responsiveLrg } from '@/src/data/data';
 import { useGetThumbnailQuery } from '../src/global/graphql';
 import graphqlRequestClient from '@/src/lib/graphqlRequestClient';

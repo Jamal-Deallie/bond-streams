@@ -11,7 +11,7 @@ import {
   DehydratedState,
 } from '@tanstack/react-query';
 import { queryClient } from '@/src/lib/graphqlRequestClient';
-import 'swiper/css';
+
 
 const bebas_neue = Bebas_Neue({ weight: '400', subsets: ['latin'] });
 const roboto = Roboto({ weight: '400', subsets: ['latin'] });
