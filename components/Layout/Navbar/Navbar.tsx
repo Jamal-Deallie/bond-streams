@@ -1,15 +1,12 @@
-import { useRef } from 'react';
 import Link from 'next/link';
-import styles from '@/styles/components/navbar.module.scss';
-import Button from '@/components/Button';
+import styles from '@/styles/components/Navbar.module.scss';
 import { useSession } from '@/src/lib/next-auth-react-query';
 import Menu from '@/components/Menu';
-import { linkOptions } from '../../../src/data/data';
+import { linkOptions } from '@/src/data/data';
 import CustomLink from '@/components/CustomLink';
 import { useRouter } from 'next/router';
-import { useIsomorphicLayoutEffect } from '@/src/hooks/useIsomorphicLayout';
-import gsap from 'gsap';
 import NavColorChange from '@/components/NavColorChange';
+import MobileMenu from '@/components/MobileMenu';
 
 const Navbar = () => {
   const [session, loading] = useSession({
@@ -19,14 +16,17 @@ const Navbar = () => {
       refetchInterval: 60 * 1000 * 5, // 5 minutes
     },
   });
+
   const router = useRouter();
-  let postColor =
-    router.pathname === '/' ? 'rgba(255, 254, 252, 1)' : 'rgba(20, 20, 20, 1)';
-  let preColor =
+  const postColor =
+    router.pathname === '/'
+      ? 'rgba(255, 254, 252, .75)'
+      : 'rgba(20, 20, 20, .75)';
+  const preColor =
     router.pathname === '/' ? 'rgba(255, 254, 252, 0)' : 'rgba(20, 20, 20, 0)';
 
   const navChildren = () => {
-    if (!session?.user) {
+    if (!session?.user || router.pathname === '/') {
       return (
         <NavColorChange postColor={postColor} preColor={preColor}>
           <div className={styles.container}>
@@ -46,7 +46,7 @@ const Navbar = () => {
             </Link>
             <div>
               <Link href='signin'>
-                <Button variant='secondary'>Sign In</Button>
+                <button className={styles.secondary}>Sign In</button>
               </Link>
             </div>
           </div>
@@ -100,6 +100,7 @@ const Navbar = () => {
             </div>
             <div>
               <Menu name={session?.user?.name} />
+              <MobileMenu />
             </div>
           </div>
         </NavColorChange>

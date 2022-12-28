@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
-
+import styles from '@/styles/components/ScrollButton.module.scss';
+import { useIsomorphicLayoutEffect } from '@/src/hooks/useIsomorphicLayout';
 const ScrollButton = () => {
   const [visible, setVisible] = useState(false);
 
@@ -20,17 +21,16 @@ const ScrollButton = () => {
     });
   };
 
-  window.addEventListener('scroll', toggleVisible);
+  useIsomorphicLayoutEffect(() => {
+    window.addEventListener('scroll', toggleVisible);
+  }, []);
 
   return (
-    <button onClick={scrollToTop}>
-      <div
-        style={{
-          display: visible ? 'inline' : 'none',
-          position: 'relative',
-          width: '300px',
-          height: '300px',
-        }}>
+    <button
+      onClick={scrollToTop}
+      className={styles.button}
+      style={{ display: visible ? 'inline' : 'none' }}>
+      <div>
         <Image
           alt='scroll up'
           src={'/icons/arrow.svg'}

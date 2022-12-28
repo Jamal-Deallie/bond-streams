@@ -33,9 +33,11 @@ const NavColorChange = ({
 
       tl.current.fromTo(
         '#navbar',
-        { backgroundColor: preColor },
+        { backgroundColor: preColor, border: 'none' },
         {
           backgroundColor: postColor,
+          backdropFilter: 'blur(10px)',
+          border: `1px solid ${postColor}`,
           duration: 1,
           ease: 'sine.in',
         }

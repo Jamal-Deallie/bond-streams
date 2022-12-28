@@ -1,0 +1,19 @@
+@use '../utils/utils' as *;
+
+.button {
+  position: fixed;
+  bottom: 10rem;
+  right: 4rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-Filter: blur(10px);
+  border: solid $primary-variant 1px;
+
+  div {
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+    rotate: -90deg;
+  }
+}

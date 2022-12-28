@@ -1,4 +1,3 @@
-import { DynamicFieldData } from '../../types/dynamic-control-types';
 import { ResponsiveData } from '../../types/typings';
 
 export const responsiveSm: ResponsiveData = {

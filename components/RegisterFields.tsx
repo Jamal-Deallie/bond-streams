@@ -3,22 +3,20 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import styles from '@/styles/components/Fields.module.scss';
-import Spinner from '@/components/Spinner';
-import { useRegisterMutation } from '@/src/graphql/generated/global/graphql';
-import graphqlRequestClient from '@/src/lib/graphqlRequestClient';
+import { useRegisterMutation } from '@/src/lib/queries';
 
 type RegisterFormProps = {
-  username?: '';
+  name?: '';
   email?: '';
   password?: '';
   repeatPassword?: '';
 };
 
 const registerSchema = Yup.object().shape({
-  username: Yup.string()
-    .required('Username is required')
-    .min(6, 'Username must be at least 6 characters')
-    .max(20, 'Username must not exceed 20 characters'),
+  name: Yup.string()
+    .required('Name is required')
+    .min(2, 'Name must be at least 6 characters')
+    .max(20, 'Name must not exceed 20 characters'),
   email: Yup.string().required('Email is required').email('Email is invalid'),
   password: Yup.string()
     .required('Password is required')
@@ -29,44 +27,44 @@ const registerSchema = Yup.object().shape({
 });
 
 const RegisterForm = () => {
-  const { mutate: Register, isLoading } = useRegisterMutation<Error>(
-    graphqlRequestClient,
-    {}
-  );
+  const { isLoading, mutate: Register, isSuccess } = useRegisterMutation();
 
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm<RegisterFormProps>({
     resolver: yupResolver(registerSchema),
   });
 
   useEffect(() => {
-    if (isSubmitSuccessful) {
+    if (isSuccess) {
       reset();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSubmitSuccessful]);
+  }, [isSuccess]);
 
   const onSubmit: SubmitHandler<RegisterFormProps> = values => {
     Register({
       email: values.email as string,
-      username: values.username as string,
+      username: values.name as string,
       password: values.password as string,
+      name: values.name as string,
     });
   };
 
   return (
     <div className={styles.container}>
-      {isSubmitSuccessful ? <p>Registration Success</p> : null}
+      {isSuccess ? (
+        <p style={{ color: 'green' }}>Registration Success</p>
+      ) : null}
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <div className={styles.field}>
-          <label> User Name</label>
-          <input type='text' {...register('username')} />
-          {errors.username ? (
-            <p style={{ color: 'red' }}>{errors.username?.message}</p>
+          <label>Name</label>
+          <input type='text' {...register('name')} />
+          {errors.name ? (
+            <p style={{ color: 'red' }}>{errors.name?.message}</p>
           ) : null}
         </div>
         <div className={styles.field}>

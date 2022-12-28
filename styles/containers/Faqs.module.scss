@@ -23,9 +23,9 @@
         margin-inline: auto;
         max-width: 85rem;
         width: 100%;
-        div:not(:first-child) {
-          margin-top: 3rem;
-        }
+        display: flex;
+        flex-direction: column;
+        gap: $space-m;
       }
     }
   }

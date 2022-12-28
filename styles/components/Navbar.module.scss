@@ -5,7 +5,7 @@
   position: fixed;
   width: 100%;
   z-index: 300;
-  background-color: $tertiary-variant;
+  width: 100%;
 }
 .container {
   padding-inline: $space-m;
@@ -28,12 +28,16 @@
         width: fit-content;
         position: relative;
       }
+
+      @include respond-below(md) {
+        display: none;
+      }
     }
   }
 }
 
 .logo {
-  width: 12rem;
+  width: 10rem;
   svg {
     filter: drop-shadow(1px 1.5px 1.75px rgb(0 0 0 / 0.4));
   }
@@ -85,6 +89,36 @@
   }
 
   button:active {
+    background-color: #f0f0f1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
+  }
+}
+
+button.secondary {
+  border: 0.25rem solid $primary-variant;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 1.2rem 2.25rem;
+  background-color: $secondary-variant;
+  color: $primary-variant;
+
+  &:hover {
+    border: $secondary-variant 0.25rem solid;
+    transform: translateY(-1px);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    background-color: $primary-variant;
+    color: $tertiary-variant;
+    opacity: 0.9;
+  }
+
+  &:active {
     background-color: #f0f0f1;
     border-color: rgba(0, 0, 0, 0.15);
     box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;

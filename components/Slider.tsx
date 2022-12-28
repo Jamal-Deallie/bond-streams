@@ -3,7 +3,7 @@ import Carousel from 'react-multi-carousel';
 import Card from '@/components/Card';
 import CollectionCard from '@/components/CollectionCard';
 import { collectionProps } from '@/src/data/data';
-
+import { ItemsProps } from '@/typings/typings';
 interface Props {
   deviceType?: string;
   responsive: any;
@@ -22,15 +22,15 @@ const Slider = ({
   infinite = true,
   arrowDisabled = false,
 }: Props) => {
+  
   const contentCards = useCallback(() => {
     if (items) {
-      return items.movies?.data?.map(({ attributes }: any) => {
-        return <Card key={attributes.slug} items={attributes} />;
+      return items?.map((item: ItemsProps) => {
+        return <Card key={item.slug} items={item} />;
       });
     }
   }, [items]);
 
-  console.log(items);
   return (
     <Carousel
       ssr

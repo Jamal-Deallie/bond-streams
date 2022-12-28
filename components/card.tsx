@@ -10,7 +10,7 @@ const Card = ({ items }: CardProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.outer}>
-        <Link href={`browse/?series=${items.slug}`} className={styles.link}>
+        <Link href={`browse/${items.slug}`} className={styles.link}>
           <div className={styles.image}>
             <Image
               alt={items.title}

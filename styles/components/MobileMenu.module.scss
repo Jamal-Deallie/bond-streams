@@ -1,0 +1,109 @@
+@use '../utils/utils' as *;
+
+.button {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: clamp(1.31rem, calc(1.24rem + 0.37vw), 1.5rem);
+  height: 4.5rem;
+  width: 12rem;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  border: 1.5px solid;
+  border-color: $primary-variant;
+  color: $primary-variant;
+  overflow: hidden;
+  cursor: pointer;
+  font-family: $heading-font;
+  z-index: 11;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.9rem;
+  letter-spacing: 1px;
+  &:hover {
+    color: $tertiary-variant;
+    border-color: $tertiary-variant;
+    background-color: $primary-variant;
+  }
+  @include respond-below(md) {
+    display: block;
+  }
+}
+
+.menu {
+  display: none;
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  background-color: $secondary-variant;
+}
+
+.links {
+  display: none;
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  padding-top: $space-2xl-3xl;
+  @include respond-below(md) {
+    display: block;
+  }
+}
+
+.bottom {
+  padding-inline: clamp(2rem, calc(1.9rem + 0.49vw), 2.25rem);
+  color: $tertiary-variant;
+  width: 100%;
+
+  ul {
+    margin-top: clamp(2rem, calc(1.9rem + 0.49vw), 2.25rem);
+    display: flex;
+    flex-direction: column;
+    gap: $space-s;
+  }
+  li {
+    color: $tertiary-variant;
+    font-family: $body-font;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    transition: all ease-in-out 250ms;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary-variant;
+    }
+  }
+}
+
+.top {
+  padding-inline: clamp(2rem, calc(1.9rem + 0.49vw), 2.25rem);
+  list-style: none;
+  padding-top: $space-2xl-3xl;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  a {
+    color: $primary-variant;
+    font-family: $heading-font;
+    font-size: clamp(2.17rem, calc(0.9rem + 6.38vw), 7.28rem);
+    text-transform: uppercase;
+    transition: all ease-in-out 250ms;
+
+    &:hover {
+      color: $tertiary-variant;
+    }
+  }
+}

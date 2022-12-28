@@ -9,9 +9,14 @@ const ContentItem = (props: Props) => {
       <div className={styles.outer}>
         <div className={styles.wrap}>
           <div className={styles.image}>
-            <ResponsiveImage
-              src={'Bond/screenshot_goldfinger_pxykiq.png'}
-              alt={'goldfinger'}
+            <Image
+              alt='Mountains'
+              src={'https://res.cloudinary.com/dp5qjsiff/image/upload/v1672024259/Bond/mincemeat_desk_e6bsey.webp'}
+              fill
+              sizes='100vw'
+              style={{
+                objectFit: 'contain',
+              }}
             />
           </div>
         </div>

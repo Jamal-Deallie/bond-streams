@@ -1,17 +1,22 @@
 import React from 'react';
 import Card from '@/components/Card';
 import styles from '@/styles/containers/ContentWrap.module.scss';
-type Props = {};
+import { ItemsProps } from '@/typings/typings';
 
-const ContentWrap = (props: Props) => {
+type ContentProps = {
+  items: ItemsProps[];
+  category: string;
+};
+
+const ContentWrap = ({ items, category }: ContentProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.outer}>
-        <h1>Movies</h1>
+        <h1>{category}</h1>
         <div className={styles.inner}>
           <div className={styles.wrap}>
-            {Array.from(Array(14).keys()).map(i => {
-              return <Card key={i} />;
+            {items.map(item => {
+              return <Card key={item.id} items={item} />;
             })}
           </div>
         </div>

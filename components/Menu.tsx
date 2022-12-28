@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import styles from '@/styles/components/Menu.module.scss';
 import Link from 'next/link';
-import { useRef, useEffect, useState, useCallback, ReactNode } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import { useIsomorphicLayoutEffect } from '@/src/hooks/useIsomorphicLayout';
 import { signOut } from 'next-auth/react';
 import gsap from 'gsap';
@@ -17,13 +17,6 @@ const Menu = ({ name }: MenuProps) => {
   const label = useRef(null);
   const router = useRouter();
   const outside = useRef<HTMLDivElement | null>(null);
-
-  let firstName = () => {
-    const firstIndx: string[] | undefined = name?.split(/(\s+)/);
-    return (
-      <p ref={label}>{firstIndx ? `Hello ${firstIndx[0]}` : 'My Profile'}</p>
-    );
-  };
 
   const logOut = async () => {
     await signOut({
@@ -46,11 +39,7 @@ const Menu = ({ name }: MenuProps) => {
           { yPercent: -105 },
           { yPercent: 0, ease: 'power3.in' }
         )
-        .to(
-          label.current,
-          { color: 'rgba(20, 20, 20, 1)', ease: 'circ.in' },
-          '<'
-        )
+
         .to(outside.current, { display: 'block', opacity: 1 });
     });
 
@@ -66,7 +55,6 @@ const Menu = ({ name }: MenuProps) => {
     <>
       <div className={styles.container} onClick={openShopMenu}>
         <div className={styles.outer}>
-          <>{firstName()}</>
           <div role='button' className={styles.wrap}>
             <div className={styles.image}>
               <Image
@@ -97,8 +85,6 @@ const Menu = ({ name }: MenuProps) => {
           <li
             role='button'
             onClick={e => {
-              // e.preventDefault();
-              // signOut({ callbackUrl: '/' });\
               logOut();
             }}>
             Sign Out

@@ -39,9 +39,6 @@
     "popularity": {
       "type": "decimal"
     },
-    "awardWon": {
-      "type": "boolean"
-    },
     "desk_img": {
       "type": "string"
     },
@@ -69,6 +66,17 @@
     },
     "genre": {
       "type": "string"
+    },
+    "seasons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::season.season"
+    },
+    "numofseasons": {
+      "type": "integer"
+    },
+    "score": {
+      "type": "decimal"
     }
   }
 }

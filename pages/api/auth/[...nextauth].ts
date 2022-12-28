@@ -32,8 +32,8 @@ export const authOptions: NextAuthOptions = {
   session: { strategy: 'jwt' },
   callbacks: {
     session: async (req: NextApiRequest, res: NextApiResponse) => {
-      console.log('session');
-      console.log({ sessionReq: req, sessionRes: res });
+      // console.log('session');
+      // console.log({ sessionReq: req, sessionRes: res });
       const { user, token, session } = req;
       session.jwt = token.jwt;
       session.id = token.id;
@@ -43,14 +43,14 @@ export const authOptions: NextAuthOptions = {
     jwt: async (req: NextApiRequest, res: NextApiResponse) => {
       const { token, user, account } = req;
       const secret = process.env.NEXTAUTH_SECRET;
-      console.log({ jwtReq: req });
+      // console.log({ jwtReq: req });
       const isSignIn = user ? true : false;
 
       if (isSignIn) {
         token.jwt = user.jwt;
         token.id = user.id;
-        console.log({ account: account.provider });
-        console.log({ token: token });
+        // console.log({ account: account.provider });
+        // console.log({ token: token });
       }
 
       return Promise.resolve(token);

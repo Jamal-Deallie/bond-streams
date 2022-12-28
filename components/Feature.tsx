@@ -44,10 +44,9 @@ function Feature() {
             zIndex: 3,
           })
           .to('#video', {
-            delay: 24,
+            delay: 23,
             opacity: 0,
             display: 'none',
-            duration: 1,
             zIndex: 1,
           })
           .to('#splash', { zIndex: 2, opacity: 1 });

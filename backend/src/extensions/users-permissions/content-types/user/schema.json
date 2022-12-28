@@ -68,7 +68,12 @@
       "relation": "oneToMany",
       "target": "api::movie.movie"
     },
-    "user": {
+    "name": {
+      "type": "string",
+      "unique": false,
+      "minLength": 2
+    },
+    "watch_list": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::watchlist.watchlist",
