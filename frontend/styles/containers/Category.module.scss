@@ -1,0 +1,23 @@
+@use '../utils/utils' as *;
+
+.container {
+  background-color: $secondary-variant;
+  width: 100%;
+  padding: $space-2xl-3xl $space-l-xl;
+  .outer {
+    margin-inline: auto;
+    h1 {
+      color: $primary-variant;
+      font-size: 4.768rem;
+    }
+
+    .inner {
+      width: 100%;
+
+      align-items: stretch;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+  }
+}

@@ -63,21 +63,10 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "watchlist": {
+    "favorites": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::movie.movie"
-    },
-    "name": {
-      "type": "string",
-      "unique": false,
-      "minLength": 2
-    },
-    "watch_list": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::watchlist.watchlist",
-      "inversedBy": "users_permissions_user"
     }
   }
 }

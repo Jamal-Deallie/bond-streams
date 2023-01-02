@@ -1,0 +1,26 @@
+@use '../utils/utils' as *;
+
+.container {
+  padding-left: $space-xl;
+  position: relative;
+  height: fit-content;
+  .category {
+    position: relative;
+    h3 {
+      font-size: $space-l;
+      color: $primary-variant;
+      padding-inline: 1rem;
+      @include respond-below(xs) {
+        font-size: 2.441rem;
+        line-height: 26px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .wrap {
+    position: relative;
+    height: fit-content;
+    margin-bottom: $space-xl;
+  }
+}

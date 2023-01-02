@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "thumbnails",
+  "info": {
+    "singularName": "thumbnail",
+    "pluralName": "thumbnails",
+    "displayName": "Thumbnail"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    }
+  }
+}
