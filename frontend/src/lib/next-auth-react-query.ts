@@ -1,4 +1,5 @@
 //@ts-nocheck
+
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 
@@ -8,12 +9,11 @@ export async function fetchSession() {
   if (Object.keys(session).length > 0) {
     return session;
   }
-  return null;
 }
 
 export function useSession({
   required,
-  redirectTo = '/signin',
+  redirectTo = '/',
   queryConfig = {},
 } = {}) {
   const router = useRouter();
@@ -21,10 +21,11 @@ export function useSession({
     ...queryConfig,
     onSettled(data, error) {
       if (queryConfig?.onSettled) queryConfig?.onSettled(data, error);
+
       if (data || !required) return;
       router.push(redirectTo);
     },
-    // enabled: !!value,
   });
-  return [query.data, query.status === 'loading',];
+
+  return [query.data, query.status === 'loading'];
 }

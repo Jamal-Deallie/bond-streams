@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import styles from '@/styles/components/signUpForm.module.scss';
+import styles from '@/styles/components/SignUpForm.module.scss';
 import { useForm, SubmitHandler, useFormState } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';

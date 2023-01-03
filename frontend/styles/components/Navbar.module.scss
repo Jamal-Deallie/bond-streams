@@ -11,7 +11,7 @@
   padding-inline: $space-m;
   height: 7.5rem;
   @include flex-center-y;
-  justify-content: space-between;
+justify-content: space-between;
   width: 100%;
 
   .options {

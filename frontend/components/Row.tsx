@@ -31,7 +31,7 @@ const Row = ({ title, query, deviceType }: RowProps) => {
     } else {
       return null;
     }
-  }, [data, deviceType, error, isLoading]);
+  }, [data, deviceType, error, isLoading, isSuccess]);
 
   return (
     <div className={styles.container}>

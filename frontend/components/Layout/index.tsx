@@ -1,7 +1,7 @@
 import { ReactNode, useRef } from 'react';
 import Footer from './Footer/Footer';
 import Navbar from './Navbar/Navbar';
-import styles from '@/styles/components/layout.module.scss';
+import styles from '@/styles/components/Layout.module.scss';
 import { useRouter } from 'next/router';
 import ScrollButton from '@/components/ScrollButton';
 

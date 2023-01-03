@@ -1,6 +1,6 @@
 import { useMemo, ReactNode } from 'react';
 import Link from 'next/link';
-import styles from '@/styles/components/footer.module.scss';
+import styles from '@/styles/components/Footer.module.scss';
 
 const Footer = () => {
   const currYear = useMemo(() => {

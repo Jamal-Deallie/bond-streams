@@ -14,7 +14,6 @@ const MobileMenu = () => {
     setLocked(!locked);
   };
 
-
   const top = useRef<HTMLUListElement>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
   const links = useRef<HTMLLIElement>(null);
@@ -37,7 +36,6 @@ const MobileMenu = () => {
       gsap.set('#cont', { display: 'none', opacity: 0 });
       (tl.current = gsap
         .timeline({ pause: true })
-        // .call(toggleLocked)
         .to('#cont', {
           duration: 0.1,
           css: { display: 'block', opacity: 1 },
@@ -80,6 +78,7 @@ const MobileMenu = () => {
       openMenu ? tl.current.play() : tl.current.reverse();
       toggleLocked();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tl, openMenu]);
 
   return (

@@ -18,7 +18,7 @@ const NavColorChange = ({
   const root = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
   const { pathname } = useRouter();
-  console.log(pathname);
+
   useIsomorphicLayoutEffect(() => {
     if (pathname === '/' || '/browse') {
       document.body.classList.add('nav_change');
@@ -44,6 +44,7 @@ const NavColorChange = ({
       );
     }
   }, [pathname, postColor, preColor]);
+
   return <div ref={root}>{children}</div>;
 };
 

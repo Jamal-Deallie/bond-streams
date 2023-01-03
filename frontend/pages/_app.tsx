@@ -11,7 +11,7 @@ import {
   DehydratedState,
 } from '@tanstack/react-query';
 import { queryClient } from '@/src/lib/queries';
-
+import PrivateRoute from '@/src/helpers/routeProtection';
 const bebas_neue = Bebas_Neue({ weight: '400', subsets: ['latin'] });
 const roboto = Roboto({ weight: '400', subsets: ['latin'] });
 
@@ -19,18 +19,20 @@ export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps<{ session: Session; dehydratedState: DehydratedState }>) {
+  const protectedRoutes = ['/browse', '/search'];
+
   return (
-    // <SessionProvider session={session} refetchInterval={5 * 60}>
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <ReactQueryDevtools initialIsOpen={false} />
-        <main className={cn(bebas_neue.className, roboto.className)}>
+        <div className={cn(bebas_neue.className, roboto.className)}>
           <Layout>
-            <Component {...pageProps} />
+            <PrivateRoute protectedRoutes={protectedRoutes}>
+              <Component {...pageProps} />
+            </PrivateRoute>
           </Layout>
-        </main>
+        </div>
       </Hydrate>
     </QueryClientProvider>
-    // </SessionProvider>
   );
 }
