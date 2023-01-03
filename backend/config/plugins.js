@@ -9,6 +9,12 @@ module.exports = ({ env }) => ({
       },
     },
   },
+
+  //...
+  "import-export-entries": {
+    enabled: true,
+  },
+
   "fuzzy-search": {
     enabled: true,
     config: {

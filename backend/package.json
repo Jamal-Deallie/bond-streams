@@ -15,10 +15,11 @@
     "@strapi/plugin-users-permissions": "4.5.3",
     "@strapi/strapi": "4.5.3",
     "@strapi/utils": "^4.0.8",
-    "better-sqlite3": "7.4.6",
+    "better-sqlite3": "^8.0.1",
     "lodash": "^4.17.21",
     "pg": "^8.8.0",
     "strapi-plugin-fuzzy-search": "^1.10.2",
+    "strapi-plugin-import-export-entries": "^1.18.0",
     "strapi-plugin-transformer": "^2.1.1",
     "webpack": "^5.74.0",
     "yup": "^0.32.9"
